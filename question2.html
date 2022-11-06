@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Race</title>
+    <link rel="stylesheet" href="style1.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<script>
+$(document).ready(function(){
+
+     $('#reset').click(function(){
+        car1.animate({left:'0%'});
+        car2.animate({left:'0%'});
+    })//
+
+   // $('#race').click(function(){
+        
+
+        $(document).keydown(function(event){
+                var car1 =$('#car1');
+                var key= event.which;
+                switch(key)
+                {
+                    case 37:
+                        car1.css('transform','rotate(0deg)');
+                        car1.animate({left:'-=5%'},1);
+                        
+                        break;
+                    
+                    case 39:
+                        car1.css('transform','rotate(0deg)');
+                        car1.animate({left:'+=5%'},1);
+                        fcar = document.getElementById('car1');
+                        x=parseInt(fcar.style.left)
+                        if(x >= 85){                            
+                            rcar1.style.backgroundColor = "RED";   
+                        }
+                        break;
+
+                }
+            })
+
+            $(document).keydown(function(event){
+                var car2 =$('#car2');
+                var key= event.which;
+                switch(key)
+                {
+                    case 65:
+                        car2.css('transform','rotate(0deg)');
+                        car2.animate({left:'-=5%'},1);
+                        break;
+                    
+                    case 68:
+                        car2.css('transform','rotate(0deg)');
+                        car2.animate({left:'+=5%'},1);
+                        scar = document.getElementById('car2');
+                        x=parseInt(scar.style.left)
+                        if(x >= 85){                            
+                            rcar2.style.backgroundColor = "RED";   
+                        }
+                        break;
+                }
+            })
+        
+    //})
+})
+</script>
+<body>
+
+<div id="sec1" >
+    <div><h1><i>Car Race</i></h1></div>
+    <div id="btn">
+        <input type="button" value="Race" id="race"><input type="button" value="Reset" id="reset">
+    </div>
+</div>
+
+<div id="slide">
+    <div id="sec2">
+        <div id="lane1"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcToI1ZBe_LggHYfgsKm-nmftrEj4umSy4wlnw&usqp=CAU" alt=""  id="car1"></div>
+    
+        <div id="lane2"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcToI1ZBe_LggHYfgsKm-nmftrEj4umSy4wlnw&usqp=CAU" alt=""  id="car2"></div>
+        <div id="danger"></div>
+    </div>
+    
+    <div id="sec3">
+        <table>
+            <tr>RESULT</tr>
+            <tr>
+                <td id="rcar1">Car 1</td>
+                <td id="rcar2">Car 2</td>
+            </tr>
+        </table>
+    </div>
+</div>
+ 
+</body>
+</html>
